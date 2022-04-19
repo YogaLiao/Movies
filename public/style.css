@@ -1,0 +1,31 @@
+body {
+    background-image: url("https://cdn.pixabay.com/photo/2022/04/03/15/33/world-wide-web-7109276_960_720.jpg");
+}
+
+.card {
+    background-color: transparent;
+    color: white;
+}
+
+.buttonParent {
+    display: flex;
+    flex-direction: row;
+}
+
+.title {
+    text-decoration: none;
+    color: white;
+}
+
+.edit{
+    width: 70px;
+    height: 40px;
+}
+
+.delete{
+    width: 70px;
+    height: 40px;
+    margin-top: 2px;
+}
+
+
