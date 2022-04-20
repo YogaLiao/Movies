@@ -3,7 +3,7 @@ const Top = require("../models/top");
 const router = express.Router()
 
 router.get("/", (req, res) => {
-    let count = 7;
+    let count = 12;
     let ids = []
 
     for(let i = 0; i < count; i++) {

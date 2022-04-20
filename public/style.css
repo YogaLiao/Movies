@@ -1,11 +1,17 @@
 body {
-    background-image: url("https://cdn.pixabay.com/photo/2022/04/03/15/33/world-wide-web-7109276_960_720.jpg");
+    background-image: url("https://cdn.pixabay.com/photo/2017/09/12/22/06/background-2743842_960_720.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.card {
-    background-color: transparent;
-    color: white;
+h1 {
+    margin: 20px 0 0 50px;
 }
+img {
+    width: 158px;
+    height: 217.25px;
+}
+
 
 .buttonParent {
     display: flex;
@@ -14,7 +20,7 @@ body {
 
 .title {
     text-decoration: none;
-    color: white;
+    color: black;
 }
 
 .edit{
