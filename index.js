@@ -8,7 +8,7 @@ app.set("view engine", "ejs")
 app.use(methodOverride("_method"))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use(topController)
+app.use("/movies",topController)
 
 const port = process.env.port || 4000
 

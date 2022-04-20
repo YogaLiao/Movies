@@ -22,8 +22,8 @@ router.get("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     Top.findById(req.params.id)
-        .then((data) => res.send(data))
-    .catch(console.error)
+        .then((data) => res.render("show", { data }))
+        .catch(console.error)
 })
 
 
