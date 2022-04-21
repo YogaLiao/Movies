@@ -2,8 +2,12 @@
 <link rel = "stylesheet" type = "text/css" href = "style.css">
 
 <h1 class = "mb-5 display-1">Top Movies</h1>
-<a href="/"></a>
+
+
 <div class="container">
+    <div class = "row mb-3">
+        <a href="/movies/new" class="btn btn-light col-2">Add a new Movie</a>
+    </div>
     <div class="row justify-content-around">
     <% data.forEach(x => { %>
     
@@ -15,6 +19,11 @@
             <a href="/movies/<%= x._id %>" class="title text-center"><%= x.title %></a>
         </div>
         <h6 class = "text-center"><%= x.imDbRating %></h6>
+        <div>
+            <a href="/movies/<%= x._id %>/edit" class="btn btn-light">Edit</a>
+            <form action="/movies/:id?_method="DELETE" method="POST">
+            <input type="submit" value="Delete" class="btn btn-danger"></form>
+        </div>
     </div>
     <% }) %>
     </div>
