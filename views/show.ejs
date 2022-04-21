@@ -29,6 +29,11 @@
             <p>Year: <%= data.year %></p>
             <p>Language: <%= wiki.language %></p>
             <p>Rating: <%= data.imDbRating %></p>
+            <div>
+                <a href="/movies/<%= data._id %>/edit" class="btn btn-outline-dark">Edit</a>
+                <form action="/movies/:id?_method="DELETE" method="POST">
+                <input type="submit" value="Delete" class="btn btn-outline-danger"></form>
+            </div>
         </div>
         <div class="col-4">
         </div>
@@ -36,6 +41,20 @@
     <div class = "row">
         <h3>Description</h3>
         <p><%= wiki.plotShort.plainText %></p>
+    </div>
+    <h3 class = "mb-2">Cast</h3>
+    <div class="row justify-content-start">
+        <% for (let i = 0; i < Math.min(5,cast.actors.length); i++) { %>
+            <div class="col-2">
+                <div class="image text-center">
+                    <img src="<%= cast.actors[i].image%>" alt="<%= cast.actors[i].name %>" width = "100px">
+                </div>
+                <div class="text-center">
+                    <h6><%= cast.actors[i].name %></h6>
+                </div>
+                <h6 class = "text-center">as: <%= cast.actors[i].asCharacter %></h6>
+            </div>
+        <% } %>
     </div>
 </div>
 </body>
