@@ -12,6 +12,9 @@ router.get("/", (req, res) => {
     if (ids.includes(rand) === false) {
         ids.push(rand)
     }
+    else {
+        count += 1
+        }
 }
     console.log(ids)
     Top.find({
