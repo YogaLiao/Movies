@@ -1,6 +1,7 @@
 const express = require("express");
 const Top = require("../models/top");
-const axios = require("axios")
+const axios = require("axios");
+const req = require("express/lib/request");
 const router = express.Router()
 
 router.get("/", (req, res) => {
@@ -47,6 +48,33 @@ router.get("/:id/edit", (req, res) => {
 router.put("/:id", (req, res) => {
     Top.findByIdAndUpdate(req.params.id, req.body, { new: true })
     .then(() => res.redirect("/movies"))
+})
+
+router.post("/search", (req, res) => {
+    console.log(req.body.search)
+    res.redirect(`/movies/search/${req.body.search}`)
+})
+
+router.get("/search/:input", (req, res) => {
+    axios.get(`https://imdb-api.com/en/API/SearchMovie/k_1fn0eocd/${req.params.input}`)
+        .then((data) => 
+            {res.render("result", { result: data.data})}
+        )
+        .catch(console.error)
+})
+
+router.get("/results/:id", (req, res) => {
+    const data = Top.find({ id: req.params.id })
+        .then((data) => 
+            {data.length > 0
+            ? res.redirect(`/movies/${data[0]._id}`)
+                : res.redirect("/movies/error")}
+        )
+        
+})
+
+router.get("/error", (req, res) => {
+    res.render("error")
 })
 
 router.get("/:id", (req, res) => {
