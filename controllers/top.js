@@ -4,12 +4,11 @@ const axios = require("axios");
 const req = require("express/lib/request");
 const router = express.Router()
 
-router.get("/", (req, res) => {
-    let count = 12;
-    let ids = []
+let ids = [];
 
+const randomId = (count) => {
     for(let i = 0; i < count; i++) {
-    let rand = Math.floor(Math.random() * 250)
+    let rand = Math.floor(Math.random() * 250) + 1
     if (ids.includes(rand) === false) {
         ids.push(rand)
     }
@@ -17,11 +16,51 @@ router.get("/", (req, res) => {
         count += 1
         }
 }
+}
+
+router.get("/", (req, res) => {
+    if (ids.length > 0) {
+        ids = []
+    }
+    console.log(ids)
+    randomId(12)
     console.log(ids)
     Top.find({
         "rank": {$in: ids}
     })
         .then((data) => res.render("top.ejs", {data}))
+        .catch(console.error)
+})
+
+router.post("/sort", (req, res) => {
+    console.log(req.body)
+    res.redirect(`/movies/sort/${req.body.sort}`)
+})
+
+router.get("/sort/:sort", (req, res) => {
+    console.log(req.body)
+    console.log(req.params)
+    const input = req.params.sort
+    Top.find({
+        "rank": {$in: ids}
+    })
+        .then((data) => {
+            console.log(data)
+            input == "title"
+                ? data.sort((a, b) => {
+                    let nameA = a.title.toUpperCase();
+                    let nameB = b.title.toUpperCase();
+                    if (nameA < nameB) {
+                        return -1;
+                    }
+                    if (nameB < nameA) {
+                        return 1
+                    }
+                    return 0
+            })
+            : data.sort((a,b) => a[input] - b[input]);
+            res.render("top", {data})
+        })
         .catch(console.error)
 })
 

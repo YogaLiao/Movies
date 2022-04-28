@@ -4,14 +4,13 @@ body {
     background-repeat: no-repeat;
 }
 
+a {
+    text-decoration: none;
+}
+
 h1 {
     margin: 20px 0 0 50px;
 }
-img {
-    width: 158px;
-    height: 217.25px;
-}
-
 
 .buttonParent {
     display: flex;
@@ -21,11 +20,12 @@ img {
 .title {
     text-decoration: none;
     color: black;
+    text-shadow: whitesmoke 2px 1px 20px;
 }
 
 .edit{
-    width: 70px;
-    height: 40px;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
 }
 
 .delete{
