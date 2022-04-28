@@ -1,7 +1,9 @@
 const express = require("express");
 const Top = require("../models/top");
+const Review = require("../models/review")
 const axios = require("axios");
 const req = require("express/lib/request");
+const { redirect } = require("express/lib/response");
 const router = express.Router()
 
 let ids = [];
@@ -116,15 +118,30 @@ router.get("/error", (req, res) => {
     res.render("error")
 })
 
+router.get("/reviews/:id/new", (req, res) => {
+    const id = req.params.id
+    Top.findById(id)
+    .then((data) => res.render("review/reviewNew.ejs", {data}))
+    .catch(console.error)
+})
+
+router.post("/reviews/:id", (req, res) => {
+    console.log(req.body)
+    Top.findByIdAndUpdate(req.params.id, { $set: { reviews: req.body.review } }, {new: true})
+    .then((data) => res.send(data))
+})
+
 router.get("/:id", (req, res) => {
     Top.findById(req.params.id)
-        .then(async (data) => {
+        .then((data) => {
             console.log(data.id)
-            const cast = await axios.get(`https://imdb-api.com/en/API/FullCast/k_1fn0eocd/${data.id}`);
-            const description = await axios.get(`https://imdb-api.com/en/API/Wikipedia/k_1fn0eocd/${data.id}`);
-            const posterInfo = await axios.get(`https://imdb-api.com/en/API/Posters/k_1fn0eocd/${data.id}`)
-            res.render("show", {data: data, cast: cast.data, wiki: description.data, poster: posterInfo.data})
-        })
+            Review.find({ dbid: req.params.id })
+                .then(async (review) => {
+                    const cast = await axios.get(`https://imdb-api.com/en/API/FullCast/k_1fn0eocd/${data.id}`);
+                    const description = await axios.get(`https://imdb-api.com/en/API/Wikipedia/k_1fn0eocd/${data.id}`);
+                    const posterInfo = await axios.get(`https://imdb-api.com/en/API/Posters/k_1fn0eocd/${data.id}`)
+                    res.render("show", {data: data, review: review, cast: cast.data, wiki: description.data, poster: posterInfo.data})
+        })})
         .catch(console.error)
 })
 

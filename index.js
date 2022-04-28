@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express")
 const app = express()
 const methodOverride = require("method-override")
@@ -11,6 +12,10 @@ app.use(express.urlencoded({ extended: true }))
 app.use("/movies",topController)
 
 const port = process.env.port || 4000
+
+app.get("/", (req, res) => {
+    res.render("home")
+})
 
 app.listen(port, () => {
     console.log(`listening on port ${port}`)
