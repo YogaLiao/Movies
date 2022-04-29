@@ -130,11 +130,11 @@ router.post("/reviews/:id", (req, res) => {
     Review.find({ dbid: req.params.id })
         .then((data) => {
             if (data.length > 0) {
-            Review.findOneAndUpdate({dbid: req.params.id}, {$push: {reviews: [{username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content}]}})
-            }
+                Review.findOneAndUpdate({ dbid: req.params.id }, { $push: { reviews: { $each: [{ username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content }] }}})
+            console.log("hello")}
             else {
-                Review.insertMany({ id: req.body.id, dbid: req.body.dbid, title: req.body.title, reviews:  [{ username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content }]})
-            }
+                Review.create({ id: req.body.id, dbid: req.body.dbid, title: req.body.title, reviews: { $each: [{ username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content }] }})
+                console.log("hi")}
     })
         .then(() => Review.find({ dbid: req.params.id }))
         .then((data) => res.send(data))
