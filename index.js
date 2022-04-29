@@ -4,7 +4,7 @@ const app = express()
 const methodOverride = require("method-override")
 const topController = require("./controllers/top")
 
-app.use(express.static(__dirname + "public"))
+app.use(express.static(__dirname + "/public"))
 app.set("view engine", "ejs")
 app.use(methodOverride("_method"))
 app.use(express.json())
