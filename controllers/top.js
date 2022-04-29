@@ -127,8 +127,23 @@ router.get("/reviews/:id/new", (req, res) => {
 
 router.post("/reviews/:id", (req, res) => {
     console.log(req.body)
-    Top.findByIdAndUpdate(req.params.id, { $set: { reviews: req.body.review } }, {new: true})
-    .then((data) => res.send(data))
+    Review.find({ dbid: req.params.id })
+        .then((data) => {
+            if (data.length > 0) {
+            Review.findOneAndUpdate({dbid: req.params.id}, {$push: {reviews: [{username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content}]}})
+            }
+            else {
+                Review.insertMany({ id: req.body.id, dbid: req.body.dbid, title: req.body.title, reviews:  [{ username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content }]})
+            }
+    })
+        .then(() => Review.find({ dbid: req.params.id }))
+        .then((data) => res.send(data))
+        .catch(console.error)
+})
+
+router.delete("reviews/:id", (req, res) => {
+    Review.findOneAndRemove({dbid: req.params.id})
+    .then(() => res.redirect(`/movies/${req.params.id}`))
 })
 
 router.get("/:id", (req, res) => {
