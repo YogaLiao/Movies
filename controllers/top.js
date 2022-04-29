@@ -87,8 +87,10 @@ router.get("/:id/edit", (req, res) => {
 })
 
 router.put("/:id", (req, res) => {
+    console.log(req.body)
     Top.findByIdAndUpdate(req.params.id, req.body, { new: true })
-    .then(() => res.redirect("/movies"))
+        .then(() => res.redirect(`/movies/${req.params.id}`))
+        .catch(console.error)
 })
 
 router.post("/search", (req, res) => {
@@ -127,23 +129,34 @@ router.get("/reviews/:id/new", (req, res) => {
 
 router.post("/reviews/:id", (req, res) => {
     console.log(req.body)
-    Review.find({ dbid: req.params.id })
+    Review.create(req.body)
+        .then(() => res.redirect(`/movies/${req.params.id}`))
+    .catch(console.error)
+})
+
+router.get("/reviews/:id/edit", (req, res) => {
+    console.log(req.params)
+    Review.findById(req.params.id)
         .then((data) => {
-            if (data.length > 0) {
-                Review.findOneAndUpdate({ dbid: req.params.id }, { $push: { reviews: { $each: [{ username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content }] }}})
-            console.log("hello")}
-            else {
-                Review.create({ id: req.body.id, dbid: req.body.dbid, title: req.body.title, reviews: { $each: [{ username: req.body.username, reviewTitle: req.body.reviewTitle, content: req.body.content }] }})
-                console.log("hi")}
-    })
-        .then(() => Review.find({ dbid: req.params.id }))
-        .then((data) => res.send(data))
+            console.log(data)
+            res.render("review/reviewEdit",{data})
+        })
+    .catch(console.error)
+})
+
+router.put("/reviews/:id", (req, res) => {
+    Review.findByIdAndUpdate(req.params.id , req.body)
+        .then((data) => res.redirect(`/movies/${data.dbid}`))
         .catch(console.error)
 })
 
-router.delete("reviews/:id", (req, res) => {
-    Review.findOneAndRemove({dbid: req.params.id})
-    .then(() => res.redirect(`/movies/${req.params.id}`))
+router.delete("/reviews/:id", (req, res) => {
+    console.log(req.params)
+    Review.findByIdAndRemove(req.params.id)
+        .then((data) => {
+            res.redirect(`/movies/${data.dbid}`)
+        })
+    .catch(console.error)
 })
 
 router.get("/:id", (req, res) => {

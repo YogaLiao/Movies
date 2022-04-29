@@ -7,39 +7,39 @@
 <form action = "/movies/<%= data._id%>/?_method=PUT" method = "POST">
     <div class="mb-3 mx-5">
       <label for="id" class="form-label">IMDB ID: </label>
-      <input type="text" class="form-control" id="id" value="<%= data.id %>">
+      <input type="text" class="form-control" id="id" value="<%= data.id %>" name = "id">
     </div>
     <div class="mb-3 mx-5">
       <label for="rank" class="form-label">Rank: </label>
-      <input type="number" class="form-control" id="rank" value="<%= data.rank %>">
+      <input type="number" class="form-control" id="rank" value="<%= data.rank %>" name = "rank">
     </div>
     <div class="mb-3 mx-5">
       <label for="title" class="form-label">Title: </label>
-      <input type="text" class="form-control" id="title" value="<%= data.title %>">
+      <input type="text" class="form-control" id="title" value="<%= data.title %>" name = "title">
     </div>
     <div class="mb-3 mx-5">
       <label for="fullTitle" class="form-label">Full Title: </label>
-      <input type="text" class="form-control" id="fullTitle" value="<%= data.fullTitle %>">
+      <input type="text" class="form-control" id="fullTitle" value="<%= data.fullTitle %>" name = "fullTitle">
     </div>
     <div class="mb-3 mx-5">
       <label for="year" class="form-label">Year: </label>
-      <input type="number" class="form-control" id="year" value="<%= data.year %>">
+      <input type="number" class="form-control" id="year" value="<%= data.year %>" name = "year">
     </div>
     <div class="mb-3 mx-5">
       <label for="image" class="form-label">Image URL: </label>
-      <input type="text" class="form-control" id="image" value="<%= data.image %>">
+      <input type="text" class="form-control" id="image" value="<%= data.image %>" name = "image">
     </div>
     <div class="mb-3 mx-5">
       <label for="crew" class="form-label">Crew: </label>
-      <input type="text" class="form-control" id="crew" value="<%= data.crew %>">
+      <input type="text" class="form-control" id="crew" value="<%= data.crew %>" name = "crew">
     </div>
     <div class="mb-3 mx-5">
       <label for="imDbRating" class="form-label">Rating: </label>
-      <input type="number" class="form-control" id="imDbRating" value="<%= data.imDbRating %>">
+      <input type="number" class="form-control" id="imDbRating" value="<%= data.imDbRating %>" name = "imDbRating">
     </div>
     <div class="mb-3 mx-5">
       <label for="imDbRatingCount" class="form-label">Rating Count: </label>
-      <input type="number" class="form-control" id="imDbRatingCount" value="<%= data.imDbRatingCount %>">
+      <input type="number" class="form-control" id="imDbRatingCount" value="<%= data.imDbRatingCount %>" name = "imDbRatingCount">
     </div>
     <button type="submit" class="btn btn-primary mx-5">Submit</button>
   </form>
