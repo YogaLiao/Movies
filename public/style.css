@@ -2,26 +2,38 @@ body {
     background-image: url("https://cdn.pixabay.com/photo/2017/09/12/22/06/background-2743842_960_720.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
 }
 
 a {
     text-decoration: none;
+    color:black
 }
 
-h1 {
-    margin: 20px 0 0 50px;
+.title:hover {
+    color: #9d4edd
 }
 
-.buttonParent {
-    display: flex;
-    flex-direction: row;
+h1,.hometext{
+    margin: 20px 50px 0 50px;
 }
 
-.title {
-    text-decoration: none;
-    color: black;
-    text-shadow: whitesmoke 2px 1px 20px;
+.home-title {
+    border-radius: 1rem;
+    border: 2px solid;
+    padding: 1em 2em;
+    font-size: 2em;
+    color: #ef233c;
+    transition: color 0.25s, border-color 0.25s, background-color 0.25s
 }
+
+.home-title:hover {
+    border-color: #9b5de5;
+    background-color: #feeafa;
+    color: #9b5de5;
+    box-shadow: 0 0.5em 0.5em -0.4em #e0aaff;
+}
+
 
 .edit{
     padding-left: 1.25rem;
