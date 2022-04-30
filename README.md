@@ -1,6 +1,6 @@
 # Movie Lovers
 ## About
-Movie Lovers ia a APP designed for people who love movies but cannot decide what to watch. It's built using Node.js, Mongoose, Express and EJS with all 5 RESTful routes and full CRUD. You can access the APP [here](https://dashboard.heroku.com/apps/gentle-tor-59853).
+Movie Lovers ia a APP designed for people who love movies but cannot decide what to watch. It's built using Node.js, Mongoose, Express and EJS with all 5 RESTful routes and full CRUD. You can access the APP [here](https://gentle-tor-59853.herokuapp.com/).
 
 ## User Stories
 ### Home Page
