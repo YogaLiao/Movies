@@ -32,5 +32,6 @@
         <label for="content" class="form-label">Review: </label>
         <input type="text" class="form-control" id="content" name = "content" value = "<%= data.content %>"> 
       </div>
-      <button type="submit" class="btn btn-primary mx-5">Submit</button>
+        <button type="submit" class="btn btn-outline-success mx-5">Submit</button>
+        <a href="/movies/<%= data.dbid %>" class="btn btn-outline-danger mx-5">Cancel</a>
   </form>

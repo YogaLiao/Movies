@@ -43,5 +43,6 @@
       <label for="imDbRatingCount" class="form-label">Rating Count: </label>
       <input type="number" class="form-control" id="imDbRatingCount" value="<%= data.imDbRatingCount %>" name = "imDbRatingCount">
     </div>
-    <button type="submit" class="btn btn-primary mx-5">Submit</button>
+    <button type="submit" class="btn btn-outline-success mx-5">Submit</button>
+    <a href="/movies/<%= data._id %>" class="btn btn-outline-danger mx-5">Cancel</a>
   </form>
