@@ -40,7 +40,7 @@ Reviews are really important for movies. They user is able to add a review by cl
 - EJS
 - CSS
 - MVC
-- Third Party API (IMDB API)
+- Third Party API (IMDB API https://imdb-api.com/api)
 
 ## List of Mongoose Models
 ### Models
