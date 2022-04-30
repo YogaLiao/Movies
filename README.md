@@ -26,12 +26,16 @@ The list we have is the top 250 movies list. But if the user would like to add m
 
 #### Search
 This function is designed for people who knows what to watch and would like to find out more information for certain movies. By entering the keywords here it's able for the user to search movies including the keywords. All the results will be shown in below page and it's able to click and get more movie information (see below for Movie Detail part). However, there are some movies that are not in our database so we don't have their information, the user can add this movie they want.
+<img width="1346" alt="image" src="https://user-images.githubusercontent.com/97146317/166087610-04bcf688-f800-4fe1-8536-9d17c4eb11fa.png">
 
 ### Movie Detail Page
 This function can be used both in our main page and in the search result page. By clicking the movie name, the user is able to access more information of this movie including their cast, their description and reviews. User can also edit this information if there is anything wrong. If the user does not like this movie, they can delete the movie by clicking "delete" button.
+<img width="1345" alt="image" src="https://user-images.githubusercontent.com/97146317/166087278-8e8f802d-df0c-4db5-abd3-9bc9b3fc7ee2.png">
+<img width="1324" alt="image" src="https://user-images.githubusercontent.com/97146317/166087301-60e9cbcb-0008-4db0-9249-9924954abbed.png">
 
 ### Review
 Reviews are really important for movies. They user is able to add a review by clicking the "Add Review" button in the Movie Detail Page. After adding their reviews, it's also available for the user to edit or delete their reviews.
+<img width="1412" alt="image" src="https://user-images.githubusercontent.com/97146317/166087686-250a138d-7a03-46d6-ad99-a371bfd2e95e.png">
 
 ## Technologies used in this app
 - Node.js
